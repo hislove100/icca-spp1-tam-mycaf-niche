@@ -2,8 +2,9 @@ cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
 title: "SPP1+ TAM–myCAF immunosuppressive niche in intrahepatic cholangiocarcinoma — analysis code"
 authors:
-  - family-names: "[Family name]"
-    given-names: "[Given name]"
+  - family-names: "Cho"
+    given-names: "Kyu-Won"
+    affiliation: "Department of Biomedical Informatics, Hallym University Chuncheon Sacred Heart Hospital, Chuncheon-si, Gangwon-do, Republic of Korea"
 version: 1.0.0
 date-released: "2026-07-24"
 license: MIT
