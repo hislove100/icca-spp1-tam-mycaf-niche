@@ -1,0 +1,8 @@
+{
+  "title": "SPP1+ TAM–myCAF immunosuppressive niche in intrahepatic cholangiocarcinoma — analysis code",
+  "description": "Integrative single-cell, spatial and multi-cohort survival re-analysis code for the SPP1+/TREM2+ TAM–myofibroblastic CAF niche in iCCA. All input datasets are public (GSE138709, GSE316402, GSE107943, E-MTAB-6389, TCGA-CHOL).",
+  "license": "MIT",
+  "upload_type": "software",
+  "keywords": ["intrahepatic cholangiocarcinoma","tumour-associated macrophage","SPP1","TREM2","cancer-associated fibroblast","spatial transcriptomics","single-cell RNA-seq"],
+  "creators": [{"name": "[Family name, Given name]", "affiliation": "[Institution]"}]
+}

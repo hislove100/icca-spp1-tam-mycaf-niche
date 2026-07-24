@@ -1,0 +1,12 @@
+scanpy==1.11.5
+anndata
+harmonypy
+leidenalg
+igraph
+numpy
+pandas
+scipy
+matplotlib
+scikit-learn
+lifelines==0.30.0
+openpyxl
