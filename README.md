@@ -1,7 +1,5 @@
 # SPP1+ TAM–myCAF immunosuppressive niche in intrahepatic cholangiocarcinoma
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21532876.svg)](https://doi.org/10.5281/zenodo.21532876)
-
 Analysis code for the integrative single-cell, spatial and multi-cohort survival
 re-analysis of the SPP1+/TREM2+ tumour-associated macrophage (TAM) – myofibroblastic
 cancer-associated fibroblast (myCAF) niche in intrahepatic cholangiocarcinoma (iCCA).
@@ -11,13 +9,14 @@ The pipeline (Python 3.10) reproduces, in execution order:
 1. Single-cell processing of GSE138709 (QC, normalization, Harmony integration, Leiden, annotation)
 2. Myeloid and stromal sub-clustering and subtype annotation
 3. SPP1 ligand–receptor interaction (label-permutation test)
+3b. Cell–cell communication network (aggregate + SPP1 pathway) and Figure 4 / S5 plots
 4. Spatial co-localization in GSE316402 Visium (per-spot scoring; neighbourhood bivariate Moran's I)
 5. Bulk prognostic scoring and survival (TCGA-CHOL, GSE107943)
 6. E-MTAB-6389 (HTA-2.0 probe→gene mapping) and three-cohort random-effects meta-analysis
 
 ## Repository structure
 ```
-
+code/
   00_figstyle.py               plotting style (Arial) + UMAP legend helper
   01a_load_per_sample.py       load each GSE138709 sample to sparse AnnData
   01b_merge_qc.py              merge samples + QC metrics
@@ -28,6 +27,8 @@ The pipeline (Python 3.10) reproduces, in execution order:
   04b_spatial_moran.py         neighbourhood bivariate Moran's I
   05_bulk_survival.py          bulk scoring, Cox/KM, meta-analysis helper
   06_emtab6389_meta.py         E-MTAB-6389 + 3-cohort meta-analysis + forest plot
+  07_cellchat_network.py       aggregate communication network + SPP1 pathway network
+  08_figure4_plots.py          Figure 4A/4B and Figure S5 (circle plots + L-R dot-plot)
 environment.yml / requirements.txt   software environment
 ```
 
@@ -46,11 +47,29 @@ All datasets are public and are NOT redistributed here:
 conda env create -f environment.yml
 conda activate icca-spp1-niche
 # download the public datasets into a ./data folder, then run the modules in order
-python 01a_load_per_sample.py 0   # ... per sample
-python 01b_merge_qc.py
-python 01c_cluster_annotate.py
+python code/01a_load_per_sample.py 0   # ... per sample
+python code/01b_merge_qc.py
+python code/01c_cluster_annotate.py
 # ...
 ```
+
+## Figure mapping
+| Figure | Script |
+|---|---|
+| Fig 1 (atlas), Fig 2/3 (subtypes) | 01c, 02 |
+| Fig 4A SPP1 pathway network (22 fine states) | 07 -> 08 |
+| Fig 4B SPP1 ligand-receptor dot-plot | 03 -> 08 |
+| Fig 5 (spatial) | 04a, 04b |
+| Fig 6 (survival / meta) | 05, 06 |
+| Fig S4 subtype tumour enrichment | 02 |
+| Fig S5 global communication network | 07 -> 08 |
+| Fig S6 SPP1-ITGA5 dot-plot | 03 |
+| Fig S7 spatial co-localization | 04b |
+| Fig S8 per-cohort Kaplan-Meier | 05, 06 |
+
+Figure 4 comprises two panels (4A SPP1 pathway network at fine cell-state resolution;
+4B SPP1 ligand-receptor dot-plot). The global lineage-level communication network is
+provided as Supplementary Figure S5.
 
 ## Citation
 If you use this code, please cite the associated manuscript (see CITATION.cff) and the
